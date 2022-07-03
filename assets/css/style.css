@@ -1,0 +1,400 @@
+/* Page loader */
+.page__loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 999;
+    background-color: var(--white-alpha-25);
+    backdrop-filter: var(--backdrop-filter-blur);
+    -webkit-backdrop-filter: var(--backdrop-filter-blur);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease;
+}
+
+.page__loader.fade--out {
+    opacity: 0;
+}
+
+.page__loader div {
+    position: absolute;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    opacity: 0.6;
+    border-top-color: transparent !important;
+    border-bottom-color: transparent !important;
+    animation: spin 1s linear infinite;
+    -webkit-animation: spin 1s linear infinite;
+}
+
+.page__loader div:nth-child(1) {
+    height: 60px;
+    width: 60px;
+    border-color: var(--main-color);
+}
+
+.page__loader div:nth-child(2) {
+    height: 45px;
+    width: 45px;
+    border-color: var(--white);
+    animation-duration: 1.3s;
+    -webkit-animation-duration: 1.3s;
+}
+
+.page__loader div:nth-child(3) {
+    height: 30px;
+    width: 30px;
+    border-color: var(--green);
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.6s linear;
+}
+
+#join-game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+    width: 100%;
+    padding: 112px 16px 32px;
+    background-color: var(--black-alpha-80);
+    border-radius: 20px;
+    position: relative;
+    margin: 64px 32px;
+}
+
+#join-game .logo {
+    position: absolute;
+    top: 0px;
+    transform: translateY(-50%);
+    width: 160px;
+    background-color: var(--white);
+    border-radius: 50%;
+    padding: 12px;
+}
+
+#join-game .inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 90%;
+    margin-bottom: 16px;
+}
+
+#join-game .inputs input {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 16px;
+    background-color: var(--white-alpha-20);
+}
+
+#join-game .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#join-game .info button {
+    margin-bottom: 16px;
+}
+
+#join-game .info .socials__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+#join-game .info .social__link {
+    margin: 0 8px;
+    font-size: 3rem;
+}
+
+#join-game .info p {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+#game-driver {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.6s linear;
+}
+
+#game-driver .wrapper {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+#game-driver .screen {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#game-driver .scr__wrapper {
+    max-width: 700px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--black-alpha-60);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#game-driver .scr__main {
+    width: 90%;
+    height: 80%;
+    background-color: var(--black);
+    font-family: 'Press Start 2P', cursive;
+    color: var(--green);
+    padding: 12px;
+}
+
+#game-driver .scr__main h3 {
+    text-align: center;
+    margin-bottom: 48px;
+    text-transform: uppercase;
+}
+
+#game-driver .scr__main p {
+    margin-bottom: 16px;
+    text-transform: capitalize;
+    width: 100%;
+}
+
+#game-driver .scr__main p label {
+    float: right;
+    color: #fff;
+    font-size: 2.4rem;
+    text-shadow: var(--neon-red);
+    line-height: 1;
+    margin-right: 32px;
+    transition: all 0.3s ease;
+}
+
+#game-driver .gamepad {
+    box-sizing: content-box;
+    width: 750px;
+    height: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 30px solid transparent;
+    border-radius: 20px;
+    background-color: var(--black-alpha-60);
+    transform-style: preserve-3d;
+    backdrop-filter: blur(5px);
+}
+
+#game-driver .gamepad--circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: var(--gamepad-color);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#game-driver .gamepad__body {
+    width: 450px;
+    height: 265px;
+    background-color: var(--gamepad-color);
+    position: absolute;
+    left: 150px;
+    transform: translateY(calc((265px - 300px)/2));
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+#game-driver .gamepad__body .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25%;
+    width: auto;
+    border-radius: 50%;
+    padding: 16px;
+    box-shadow: 0 0 20px var(--main-alpha-60);
+    margin: 12px 0px;
+}
+
+#game-driver .gamepad__body button {
+    font-size: 1.4rem;
+}
+
+#game-driver .gamepad__body button:last-child {
+    margin-bottom: 16px;
+}
+
+#game-driver .gamepad__left {
+    left: 0;
+}
+
+#game-driver .gamepad__left::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: 45px;
+    width: 180px;
+    height: 60px;
+    border-radius: 30px;
+    z-index: -1;
+    background-color: var(--gamepad-color-2nd);
+}
+
+#game-driver .gamepad__right {
+    right: 0;
+}
+
+#game-driver .gamepad__right::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 45px;
+    width: 180px;
+    height: 60px;
+    border-radius: 30px;
+    z-index: -1;
+    background-color: var(--gamepad-color-2nd);
+}
+
+#game-driver .ctrl__container--left {
+    background-color: var(--gamepad-color-l);
+    width: 65%;
+    height: 65%;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#game-driver .ctrl__btn--circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--black-alpha-60);
+    background-color: var(--gamepad-color-btn);
+}
+
+#game-driver .ctrl__btn {
+    width: 40px;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 3.2rem;
+    box-shadow: 0 0 5px var(--black-alpha-60);
+    background-color: var(--gamepad-color-btn);
+    position: absolute;
+    cursor: pointer;
+    color: var(--white-alpha-60);
+}
+
+#game-driver .ctrl__btn:hover,
+#game-driver .ctrl__btn.active {
+    background-color: var(--gamepad-color-btn-hover);
+}
+
+#game-driver #ctrl--up {
+    top: 25px;
+    left: 0;
+    transform: translateX(calc(300px * 0.65 / 2 - 20px));
+}
+
+#game-driver #ctrl--right {
+    top: 0;
+    right: 25px;
+    transform: translateY(calc(300px * 0.65 / 2 - 25px)) rotate(90deg);
+}
+
+#game-driver #ctrl--down {
+    bottom: 25px;
+    left: 0;
+    transform: translateX(calc(300px * 0.65 / 2 - 20px)) rotate(180deg);
+}
+
+#game-driver #ctrl--left {
+    top: 0;
+    left: 25px;
+    transform: translateY(calc(300px * 0.65 / 2 - 25px)) rotate(-90deg);
+}
+
+#game-driver .ctrl__container--right {
+    background-color: var(--gamepad-color-r);
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#game-driver .ctrl__bomb {
+    font-size: 6.4rem;
+    color: var(--white-alpha-60);
+    width: 40%;
+    height: 40%;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#game-driver .ctrl__bomb::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 5px var(--black-alpha-60);
+    background-color: var(--gamepad-color-btn);
+    position: absolute;
+    cursor: pointer;
+    transform: rotate(-45deg);
+    z-index: -1;
+}
+
+#game-driver .ctrl__bomb:hover::after,
+#game-driver .ctrl__bomb.active::after {
+    background-color: var(--gamepad-color-btn-hover);
+}

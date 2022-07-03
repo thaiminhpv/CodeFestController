@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --main-color: #B02510;
+    --main-alpha-60: rgb(176, 37, 16, 60);
+    --white: #fff;
+    --white-alpha-20: rgba(255, 255, 255, 0.2);
+    --white-alpha-60: rgba(255, 255, 255, 0.6);
+    --white-alpha-80: rgba(255, 255, 255, 0.8);
+    --black: #000;
+    --black-alpha-80: rgba(0, 0, 0, 0.8);
+    --black-alpha-60: rgba(0, 0, 0, 0.6);
+    --green: #00dc00;
+    --green-alpha-60: rgba(17, 86, 23, 60);
+    --gamepad-color: #cfcfcd;
+    --gamepad-color-2nd: #aaaaaa;
+    --gamepad-color-l: #c8c8c8;
+    --gamepad-color-r: #a5a7a4;
+    --gamepad-color-btn: #444444;
+    --gamepad-color-btn-hover: #979797;
+    --gamepad-color-bomb: #444444;
+
+    --neon-red: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #f00,
+    0 0 35px #f00, 0 0 40px #f00, 0 0 50px #f00, 0 0 75px #f00;
+    --neon-green: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #b6ff00,
+    0 0 35px #b6ff00, 0 0 40px #b6ff00, 0 0 50px #b6ff00, 0 0 75px #b6ff00;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+    -webkit-box-sizing: inherit;
+    -webkit-font-smoothing: antialiased;
+    outline: none;
+}
+
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.5;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    scroll-behavior: smooth;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    background: url(../img/background.png) top center / cover no-repeat;;
+    background-attachment: fixed;
+    font-size: 1.6rem;
+    color: var(--white);
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1, h2 {
+    font-weight: 600;
+}
+
+h3, h4, h5, h6 {
+    font-weight: 500;
+}
+
+img {
+    height: 100%;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+a {
+    text-decoration: none;
+    color: var(--white);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--main-color);
+    transition: all 0.3s ease;
+}
+
+
+input {
+    border: 1px solid var(--white-alpha-80);
+    color: inherit;
+    font-size: 1.6rem;
+    border-radius: 20px;
+    padding: 0 16px;
+}
+
+button {
+    font-family: inherit;
+    user-select: none;
+    border: none;
+}
+
+.btn {
+    line-height: 1.5;
+    color: var(--main-color);
+    background-color: var(--white);
+    padding: 10px 28px;
+    display: inline-block;
+    border-radius: 30px;
+    border: none;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-family: inherit;
+    font-size: 1.8rem;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    transition: all 0.3s ease;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.btn:hover {
+    color: var(--white);
+    background-color: var(--main-color);
+    transition: all 0.3s ease;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.disable {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.6s linear !important;
+}
+
+.fade-out {
+    animation: fadeOut 0.6s linear !important;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.0/socket.io.js" integrity="sha512-+l9L4lMTFNy3dEglQpprf7jQBhQsQ3/WvOnjaN/+/L4i0jOstgScV0q2TjfvRF4V+ZePMDuZYIQtg5T4MKr+MQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div class="page__loader">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <!-- <div class="orientation-require">
+        <img src="./assets/img/orientation.gif" alt="">
+    </div> -->
+    <div class="main disable">
+        <form id="join-game">
+        
+            <div class="logo">
+                <img src="./assets/img/logo2.png">
+            </div>
+        
+            <div class="inputs">
+                <input type="text" name="" id="host" placeholder="Host">
+                <input type="text" name="" id="gameID" placeholder="Game ID">
+                <input type="text" name="" id="playerID" placeholder="Player ID">
+            </div>
+            
+            <div class="info">
+                <button id="join-game-btn" class="btn" type="button"><i class="fa-solid fa-gamepad"></i> join game</button>
+                <div class="socials__link">
+                    <a href="https://www.facebook.com/fu.jsclub" target= "_blank" class="social__link social__link--facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/fptu.jsclub/" target= "_blank" class="social__link social__link--instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="mailto:jsclub.fpt@gmail.com" class="social__link social__link--email"><i class="fa-solid fa-envelope"></i></a>
+                </div>
+                <p>Lorem ipsum dolor sit amet cons</p>
+            </div>
+        
+        </form>
+        <div id="game-driver" class="disable">
+            <div class="wrapper">
+                <div class="screen">
+                    <div class="scr__wrapper">
+                        <div class="scr__main">
+                            <h3>JS CODEFEST 2022: TEST API</h3>
+                            <p>Server Connecting Status: <label id="connected-status">•</label></p>
+                            <p>Socket Status: <label id="socket-status">•</label></p>
+                            <p>Joined Game Status: <label id="joingame-status">•</label></p>
+                            <p>TickTack Game Status: <label id="ticktack-status">•</label></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="gamepad">
+                    <div class="gamepad__body">
+                        <div class="logo">
+                            <img src="./assets/img/logo2.png" alt=""> 
+                            <!-- neumorphism -->
+                        </div>
+                        <button id="reconnect-btn" class="btn" type="button"><i class="fa-solid fa-arrows-rotate"></i> reconnect</button>
+                        <button id="quit-game-btn" class="btn" type="button"><i class="fa-solid fa-arrow-right-from-bracket"></i> quit game</button>
+                    </div>
+                    <div class="gamepad__left gamepad--circle">
+                        <div class="ctrl__container--left">
+                            <div class="ctrl__btn--circle"></div>
+                            <button onclick="socket.emit('drive player', {direction: '3' });" type="button" id="ctrl--up" class="ctrl__btn"><i class="fa-solid fa-caret-up"></i></button>
+                            <button onclick="socket.emit('drive player', {direction: '2' });" type="button" id="ctrl--right" class="ctrl__btn"><i class="fa-solid fa-caret-up"></i></button>
+                            <button onclick="socket.emit('drive player', {direction: '4' });" type="button" id="ctrl--down" class="ctrl__btn"><i class="fa-solid fa-caret-up"></i></button>
+                            <button onclick="socket.emit('drive player', {direction: '1' });" type="button" id="ctrl--left" class="ctrl__btn"><i class="fa-solid fa-caret-up"></i></button>
+                        </div>
+                    </div>
+                    <div class="gamepad__right gamepad--circle">
+                        <div class="ctrl__container--right">
+                            <button onclick="socket.emit('drive player', {direction: 'b' });" type="button" id="ctrl--bomb" class="ctrl__bomb"><i class="fa-solid fa-bomb"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="./assets/fonts/icon/all.min.js"></script>
+    <script src="./assets/script/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+@media (max-width: 1401px) and (orientation:landscape) {
+    #join-game {
+        transform: scale(1.3);
+    }
+
+    #game-driver .screen {
+        display: none;
+    }
+
+    .gamepad {
+        transform: scale(1.5);
+    }
+}
+
+@media (max-width: 1251px) and (orientation:landscape) {
+    #join-game {
+        transform: scale(1);
+    }
+
+    .gamepad {
+        transform: scale(1.2);
+    }
+}
+
+@media (max-width: 991px) and (orientation:landscape) {
+    #join-game {
+        flex-direction: row;
+        max-height: 300px;
+        height: 100%;
+    }
+
+    #join-game .logo {
+        width: 100px;
+        transform: translateY(-20%);
+    }
+
+    #join-game .inputs {
+        margin-right: 8px;
+    }
+
+    #join-game .info {
+        margin-left: 8px;
+    }
+
+    .gamepad {
+        transform: scale(0.9);
+    }
+}
+
+@media (max-width: 767px) and (orientation:landscape) {
+    .gamepad {
+        transform: scale(0.8);
+    }
+}
