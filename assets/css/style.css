@@ -328,6 +328,14 @@
     color: var(--white-alpha-60);
 }
 
+#game-driver .ctrl__btn::before {
+    position: absolute;
+    top: -32px;
+    left: 12px;
+    font-size: 2rem;
+    color: var(--gamepad-color-btn);
+}
+
 #game-driver .ctrl__btn:hover,
 #game-driver .ctrl__btn.active {
     background-color: var(--gamepad-color-btn-hover);
@@ -339,10 +347,19 @@
     transform: translateX(calc(300px * 0.65 / 2 - 20px));
 }
 
+#game-driver #ctrl--up::before {
+    content: 'W';
+}
+
 #game-driver #ctrl--right {
     top: 0;
     right: 25px;
     transform: translateY(calc(300px * 0.65 / 2 - 25px)) rotate(90deg);
+}
+
+#game-driver #ctrl--right::before {
+    content: 'D';
+    transform: rotate(-90deg);
 }
 
 #game-driver #ctrl--down {
@@ -351,10 +368,20 @@
     transform: translateX(calc(300px * 0.65 / 2 - 20px)) rotate(180deg);
 }
 
+#game-driver #ctrl--down::before {
+    content: 'S';
+    transform: rotate(-180deg);
+}
+
 #game-driver #ctrl--left {
     top: 0;
     left: 25px;
     transform: translateY(calc(300px * 0.65 / 2 - 25px)) rotate(-90deg);
+}
+
+#game-driver #ctrl--left::before {
+    content: 'A';
+    transform: rotate(90deg);
 }
 
 #game-driver .ctrl__container--right {
@@ -367,7 +394,7 @@
     justify-content: center;
 }
 
-#game-driver .ctrl__bomb {
+#game-driver #ctrl--bomb {
     font-size: 6.4rem;
     color: var(--white-alpha-60);
     width: 40%;
@@ -378,7 +405,17 @@
     z-index: 1;
 }
 
-#game-driver .ctrl__bomb::after {
+#game-driver #ctrl--bomb::before {
+    position: absolute;
+    content: 'Space';
+    text-transform: uppercase;
+    top: -20px;
+    left: 80px;
+    font-size: 2rem;
+    color: var(--gamepad-color-btn);
+}
+
+#game-driver #ctrl--bomb::after {
     content: '';
     position: absolute;
     top: 0;
@@ -394,7 +431,7 @@
     z-index: -1;
 }
 
-#game-driver .ctrl__bomb:hover::after,
-#game-driver .ctrl__bomb.active::after {
+#game-driver #ctrl--bomb:hover::after,
+#game-driver #ctrl--bomb.active::after {
     background-color: var(--gamepad-color-btn-hover);
 }

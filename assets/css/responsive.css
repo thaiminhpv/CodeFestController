@@ -10,6 +10,11 @@
     .gamepad {
         transform: scale(1.5);
     }
+
+    #game-driver .ctrl__btn::before,
+    #game-driver #ctrl--bomb::before {
+        display: none;
+    }
 }
 
 @media (max-width: 1251px) and (orientation:landscape) {
