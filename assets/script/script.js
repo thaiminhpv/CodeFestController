@@ -127,11 +127,6 @@ window.onkeypress = (e) => {
     const key = String.fromCharCode(e.which);
     var btnPressed;
     switch (key) {
-        case " ":
-            btnPressed = document.getElementById("ctrl--bomb");
-            btnPressed.click();
-            keyPress(btnPressed);
-            break;
         case "a":
             btnPressed = document.getElementById("ctrl--left");
             btnPressed.click();
@@ -149,6 +144,11 @@ window.onkeypress = (e) => {
             break;
         case "s":
             btnPressed = document.getElementById("ctrl--down");
+            btnPressed.click();
+            keyPress(btnPressed);
+            break;
+        case " ":
+            btnPressed = document.getElementById("ctrl--bomb");
             btnPressed.click();
             keyPress(btnPressed);
             break;
