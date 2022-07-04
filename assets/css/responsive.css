@@ -1,4 +1,5 @@
 @media (max-width: 1401px) and (orientation:landscape) {
+    #overlay,
     #join-game {
         transform: scale(1.3);
     }
@@ -7,6 +8,7 @@
         display: none;
     }
 
+    #overlay,
     .gamepad {
         transform: scale(1.5);
     }
@@ -18,10 +20,12 @@
 }
 
 @media (max-width: 1251px) and (orientation:landscape) {
+    #overlay,
     #join-game {
         transform: scale(1);
     }
 
+    #overlay,
     .gamepad {
         transform: scale(1.2);
     }
@@ -47,12 +51,14 @@
         margin-left: 8px;
     }
 
+    #overlay,
     .gamepad {
         transform: scale(0.9);
     }
 }
 
 @media (max-width: 767px) and (orientation:landscape) {
+    #overlay,
     .gamepad {
         transform: scale(0.8);
     }
