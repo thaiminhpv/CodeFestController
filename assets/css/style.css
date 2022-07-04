@@ -337,7 +337,7 @@
     color: var(--gamepad-color-btn);
 }
 
-#game-driver .ctrl__btn:hover,
+#game-driver .ctrl__btn:active,
 #game-driver .ctrl__btn.active {
     background-color: var(--gamepad-color-btn-hover);
 }
@@ -433,7 +433,7 @@
     z-index: -1;
 }
 
-#game-driver #ctrl--bomb:hover::after,
+#game-driver #ctrl--bomb:active::after,
 #game-driver #ctrl--bomb.active::after {
     background-color: var(--gamepad-color-btn-hover);
 }

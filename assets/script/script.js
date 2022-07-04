@@ -123,34 +123,33 @@ function setSocketAtt() {
         console.log('[Socket] drive-player responsed, res: ', res);
     });    
 }
+var btnLeftPressed = document.getElementById("ctrl--left");
+var btnRightPressed = document.getElementById("ctrl--right");
+var btnUpPressed = document.getElementById("ctrl--up");
+var btnDownPressed = document.getElementById("ctrl--down");
+var btnBombPressed = document.getElementById("ctrl--bomb");
 window.onkeypress = (e) => {
     const key = String.fromCharCode(e.which);
-    var btnPressed;
     switch (key) {
         case "a":
-            btnPressed = document.getElementById("ctrl--left");
-            btnPressed.click();
-            keyPress(btnPressed);
+            btnLeftPressed.click();
+            keyPress(btnLeftPressed);
             break;
         case "d":
-            btnPressed = document.getElementById("ctrl--right");
-            btnPressed.click();
-            keyPress(btnPressed);
+            btnRightPressed.click();
+            keyPress(btnRightPressed);
             break;
         case "w":
-            btnPressed = document.getElementById("ctrl--up");
-            btnPressed.click();
-            keyPress(btnPressed);
+            btnUpPressed.click();
+            keyPress(btnUpPressed);
             break;
         case "s":
-            btnPressed = document.getElementById("ctrl--down");
-            btnPressed.click();
-            keyPress(btnPressed);
+            btnDownPressed.click();
+            keyPress(btnDownPressed);
             break;
         case " ":
-            btnPressed = document.getElementById("ctrl--bomb");
-            btnPressed.click();
-            keyPress(btnPressed);
+            btnBombPressed.click();
+            keyPress(btnBombPressed);
             break;
     }
     
