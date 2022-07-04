@@ -9,6 +9,7 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         document.querySelector('.page__loader').style.display = 'none';
     }, 600);
+    CheckScreenOrientation();
 });
 
 screen.orientation.addEventListener("change", function () {
@@ -17,12 +18,11 @@ screen.orientation.addEventListener("change", function () {
 
 function CheckScreenOrientation() {
     var overlay = document.getElementById("overlay");
-    var screenOrientation = screen.orientation.angle;
-
-    if (screenOrientation === 0) {
-        overlay.classList.remove("disable");
-    } else {
+    
+    if(screen.availHeight < screen.availWidth){
         overlay.classList.add("disable");
+    } else {
+        overlay.classList.remove("disable");
     }
 }
 
