@@ -8,8 +8,8 @@ window.addEventListener('load', () => {
     document.querySelector('.page__loader').classList.add('fade--out');
     setTimeout(() => {
         document.querySelector('.page__loader').style.display = 'none';
+        CheckScreenOrientation();
     }, 600);
-    CheckScreenOrientation();
 });
 
 screen.orientation.addEventListener("change", function () {
@@ -18,10 +18,13 @@ screen.orientation.addEventListener("change", function () {
 
 function CheckScreenOrientation() {
     var overlay = document.getElementById("overlay");
-    
+    var gamepad = document.querySelector(".gamepad");
+
     if(screen.availHeight < screen.availWidth){
         overlay.classList.add("disable");
+        gamepad.classList.remove("disable");
     } else {
+        gamepad.classList.add("disable");
         overlay.classList.remove("disable");
     }
 }
