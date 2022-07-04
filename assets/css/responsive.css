@@ -13,6 +13,7 @@
         transform: scale(1.5);
     }
 
+    #game-driver .gamepad__body button::before,
     #game-driver .ctrl__btn::before,
     #game-driver #ctrl--bomb::before {
         display: none;

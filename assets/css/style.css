@@ -314,7 +314,25 @@
 }
 
 #game-driver .gamepad__body button {
+    position: relative;
     font-size: 1.4rem;
+}
+
+#game-driver .gamepad__body button::before {
+    position: absolute;
+    top: -10px;
+    left: 136px;
+    font-size: 2rem;
+    color: var(--gamepad-color-btn);
+    z-index: 2;
+}
+
+#game-driver .gamepad__body #reconnect-btn::before {
+    content: 'R';
+}
+
+#game-driver .gamepad__body #quit-game-btn::before {
+    content: 'Q';
 }
 
 #game-driver .gamepad__body button:last-child {
@@ -391,6 +409,7 @@
     left: 12px;
     font-size: 2rem;
     color: var(--gamepad-color-btn);
+    text-transform: uppercase;
 }
 
 #game-driver .ctrl__btn:active,

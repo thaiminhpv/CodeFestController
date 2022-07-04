@@ -41,25 +41,44 @@ var reconnectBtn = document.getElementById("reconnect-btn");
 var quitGameBtn = document.getElementById("quit-game-btn");
 var socket;
 
-joinGameBtn.addEventListener("click", () => {
+// joinGameBtn.addEventListener("click", () => {
+//     joinGame();
+// });
+
+window.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      joinGameBtn.click();
+    }
+});
+
+function joinGame() {
     apiServer= document.getElementById("host").value;
     gameId = document.getElementById("gameID").value;
     playerId = document.getElementById("playerID").value;
     DisableForm();
     socket = io.connect(apiServer, { reconnect: false, transports: ['websocket'] });
     setSocketAtt();
-});
+}
 
 reconnectBtn.addEventListener("click", () => {
+    reconnect();
+})
+
+function reconnect() {
     socket.close();
     socket = io.connect(apiServer, { reconnect: false, transports: ['websocket'] });
     setSocketAtt();
-})
+}
 
 quitGameBtn.addEventListener("click", () => {
+    quitGame();
+})
+
+function quitGame() {
     socket.close();
     EnableForm();
-})
+}
 
 function DisableForm() {
     document.getElementById("join-game").classList.add("fade-out");
@@ -175,6 +194,12 @@ window.onkeypress = (e) => {
         case " ":
             btnPressed = document.getElementById("ctrl--bomb");
             keyPress(btnPressed);
+            break;
+        case "r":
+            reconnect();
+            break;
+        case "q":
+            quitGame();
             break;
     }
     
