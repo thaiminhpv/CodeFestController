@@ -9,7 +9,19 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         document.querySelector('.page__loader').style.display = 'none';
     }, 600);
+    
 });
+
+screen.addEventListener("orientationchange", function () {
+    CheckScreenOrientation();
+});
+
+function CheckScreenOrientation() {
+    overlay = document.getElementById("overlay");
+    if(screen.availHeight < screen.availWidth){
+        overlay.classList.add("disable");
+    }
+}
 
 // const gameId = '422d6910-5520-41db-9de8-f653699fc3b7';
 // const playerId = 'player2-xxx';
@@ -161,8 +173,3 @@ window.onkeypress = (e) => {
     }
 };
 
-function CheckScreenOrientation() {
-    if(screen.availHeight > screen.availWidth){
-        alert("Please use Landscape!");
-    }
-}
