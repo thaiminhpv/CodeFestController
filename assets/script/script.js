@@ -41,9 +41,9 @@ var reconnectBtn = document.getElementById("reconnect-btn");
 var quitGameBtn = document.getElementById("quit-game-btn");
 var socket;
 
-// joinGameBtn.addEventListener("click", () => {
-//     joinGame();
-// });
+joinGameBtn.addEventListener("click", () => {
+    joinGame();
+});
 
 window.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
