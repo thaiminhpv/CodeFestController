@@ -9,16 +9,19 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         document.querySelector('.page__loader').style.display = 'none';
     }, 600);
-    
 });
 
-screen.addEventListener("orientationchange", function () {
+screen.orientation.addEventListener("change", function () {
     CheckScreenOrientation();
 });
 
 function CheckScreenOrientation() {
-    overlay = document.getElementById("overlay");
-    if(screen.availHeight < screen.availWidth){
+    var overlay = document.getElementById("overlay");
+    var screenOrientation = screen.orientation.angle;
+
+    if (screenOrientation === 0) {
+        overlay.classList.remove("disable");
+    } else {
         overlay.classList.add("disable");
     }
 }
