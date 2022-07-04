@@ -64,23 +64,22 @@
                     <div class="gamepad__body">
                         <div class="logo">
                             <img src="./assets/img/logo2.png" alt=""> 
-                            <!-- neumorphism -->
                         </div>
-                        <button id="reconnect-btn" class="btn" type="button"><i class="fa-solid fa-arrows-rotate"></i> reconnect</button>
-                        <button id="quit-game-btn" class="btn" type="button"><i class="fa-solid fa-arrow-right-from-bracket"></i> quit game</button>
+                        <button id="reconnect-btn" class="btn" type="button" onmousedown="event.preventDefault();"><i class="fa-solid fa-arrows-rotate"></i> reconnect</button>
+                        <button id="quit-game-btn" class="btn" type="button" onmousedown="event.preventDefault();"><i class="fa-solid fa-arrow-right-from-bracket"></i> quit game</button>
                     </div>
                     <div class="gamepad__left gamepad--circle">
                         <div class="ctrl__container--left">
                             <div class="ctrl__btn--circle"></div>
-                            <button onclick="socket.emit('drive player', {direction: '3' });" type="button" id="ctrl--up" class="ctrl__btn"><i class="fa-solid fa-caret-up"></i></button>
-                            <button onclick="socket.emit('drive player', {direction: '2' });" type="button" id="ctrl--right" class="ctrl__btn"><i class="fa-solid fa-caret-up"></i></button>
-                            <button onclick="socket.emit('drive player', {direction: '4' });" type="button" id="ctrl--down" class="ctrl__btn"><i class="fa-solid fa-caret-up"></i></button>
-                            <button onclick="socket.emit('drive player', {direction: '1' });" type="button" id="ctrl--left" class="ctrl__btn"><i class="fa-solid fa-caret-up"></i></button>
+                            <button onclick="socket.emit('drive player', {direction: '3' });" type="button" id="ctrl--up" class="ctrl__btn" onmousedown="event.preventDefault();"><i class="fa-solid fa-caret-up"></i></button>
+                            <button onclick="socket.emit('drive player', {direction: '2' });" type="button" id="ctrl--right" class="ctrl__btn" onmousedown="event.preventDefault();"><i class="fa-solid fa-caret-up"></i></button>
+                            <button onclick="socket.emit('drive player', {direction: '4' });" type="button" id="ctrl--down" class="ctrl__btn" onmousedown="event.preventDefault();"><i class="fa-solid fa-caret-up"></i></button>
+                            <button onclick="socket.emit('drive player', {direction: '1' });" type="button" id="ctrl--left" class="ctrl__btn" onmousedown="event.preventDefault();"><i class="fa-solid fa-caret-up"></i></button>
                         </div>
                     </div>
                     <div class="gamepad__right gamepad--circle">
                         <div class="ctrl__container--right">
-                            <button onclick="socket.emit('drive player', {direction: 'b' });" type="button" id="ctrl--bomb" class="ctrl__bomb"><i class="fa-solid fa-bomb"></i></button>
+                            <button onclick="socket.emit('drive player', {direction: 'b' });" type="button" id="ctrl--bomb" class="ctrl__bomb" onmousedown="event.preventDefault();"><i class="fa-solid fa-bomb"></i></button>
                         </div>
                     </div>
                 </div>

@@ -21,9 +21,12 @@
     --gamepad-color-btn-hover: #979797;
     --gamepad-color-bomb: #444444;
 
-    --neon-red: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #f00,
+    --red: #f00;
+    --neon-red: 0 0 5px #f00, 0 0 10px #f00, 0 0 15px #f00, 0 0 20px #f00,
     0 0 35px #f00, 0 0 40px #f00, 0 0 50px #f00, 0 0 75px #f00;
-    --neon-green: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #b6ff00,
+
+    --green: #b6ff00;
+    --neon-green: 0 0 5px #b6ff00, 0 0 10px #b6ff00, 0 0 15px #b6ff00, 0 0 20px #b6ff00,
     0 0 35px #b6ff00, 0 0 40px #b6ff00, 0 0 50px #b6ff00, 0 0 75px #b6ff00;
 }
 
@@ -53,7 +56,7 @@ html {
 body {
     height: 100vh;
     width: 100vw;
-    background: url(../img/background.png) top center / cover no-repeat;;
+    background: url(../img/background.png) bottom center / cover no-repeat;;
     background-attachment: fixed;
     font-size: 1.6rem;
     color: var(--white);

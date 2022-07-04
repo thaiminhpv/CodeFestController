@@ -62,7 +62,7 @@
 #overlay {
     width: 100vw;
     height: 100vh;
-    background-color: #000;
+    background-color: var(--black);
     position: fixed;
     z-index: 10;
     display: flex;
@@ -254,7 +254,7 @@
 
 #game-driver .scr__main p label {
     float: right;
-    color: #fff;
+    color: #f00;
     font-size: 2.4rem;
     text-shadow: var(--neon-red);
     line-height: 1;

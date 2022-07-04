@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
     }, 600);
 });
 
-screen.orientation.addEventListener("change", function () {
+screen.orientation.addEventListener("change", () => {
     CheckScreenOrientation();
 });
 
@@ -92,7 +92,9 @@ function EnableForm() {
 function setSocketAtt() {
     socket.on('connect', () => {
         console.log('on connect');
+        document.getElementById('connected-status').style.color = "var(--green)";
         document.getElementById('connected-status').style.textShadow = "var(--neon-green)";
+        document.getElementById('socket-status').style.color = "var(--green)";
         document.getElementById('socket-status').style.textShadow = "var(--neon-green)";
         console.log('[Socket] connected to server');    
         // API-1a
@@ -101,20 +103,26 @@ function setSocketAtt() {
     
     socket.on('disconnect', () => {
         console.warn('[Socket] disconnected');
+        document.getElementById('socket-status').style.color = "var(--red)";
         document.getElementById('socket-status').style.textShadow = "var(--neon-red)";
+        document.getElementById('connected-status').style.color = "var(--red)";
         document.getElementById('connected-status').style.textShadow = "var(--neon-red)";
     });
     
     socket.on('connect_failed', () => {
         console.warn('[Socket] connect_failed');
+        document.getElementById('connected-status').style.color = "var(--red)";
         document.getElementById('connected-status').style.textShadow = "var(--neon-red)";
+        document.getElementById('socket-status').style.color = "var(--red)";
         document.getElementById('socket-status').style.textShadow = "var(--neon-red)";
     });
     
     
     socket.on('error', (err) => {
         console.error('[Socket] error ', err);
+        document.getElementById('connected-status').style.color = "var(--red)";
         document.getElementById('connected-status').style.textShadow = "var(--neon-red)";
+        document.getElementById('socket-status').style.color = "var(--red)";
         document.getElementById('socket-status').style.textShadow = "var(--neon-red)";
     });
     
@@ -124,6 +132,7 @@ function setSocketAtt() {
     // API-1b
     socket.on('join game', (res) => {
         console.log('[Socket] join-game responsed', res);
+        document.getElementById('joingame-status').style.color = "var(--green)";
         document.getElementById('joingame-status').style.textShadow = "var(--neon-green)";
     });
     
@@ -131,6 +140,7 @@ function setSocketAtt() {
     socket.on('ticktack player', (res) => {
         console.info('> ticktack');
         console.log('[Socket] ticktack-player responsed, map_info: ', res.map_info);
+        document.getElementById('ticktack-status').style.color = "var(--green)";
         document.getElementById('ticktack-status').style.textShadow = "var(--neon-green)";
     });
     
@@ -141,37 +151,36 @@ function setSocketAtt() {
         console.log('[Socket] drive-player responsed, res: ', res);
     });    
 }
-var btnLeftPressed = document.getElementById("ctrl--left");
-var btnRightPressed = document.getElementById("ctrl--right");
-var btnUpPressed = document.getElementById("ctrl--up");
-var btnDownPressed = document.getElementById("ctrl--down");
-var btnBombPressed = document.getElementById("ctrl--bomb");
+
+var btnPressed;
 window.onkeypress = (e) => {
-    const key = String.fromCharCode(e.which);
+    var key = e.key;
+    console.log(e.key);
     switch (key) {
         case "a":
-            btnLeftPressed.click();
-            keyPress(btnLeftPressed);
+            btnPressed = document.getElementById("ctrl--left");
+            keyPress(btnPressed);
             break;
         case "d":
-            btnRightPressed.click();
-            keyPress(btnRightPressed);
+            btnPressed = document.getElementById("ctrl--right");
+            keyPress(btnPressed);
             break;
         case "w":
-            btnUpPressed.click();
-            keyPress(btnUpPressed);
+            btnPressed = document.getElementById("ctrl--up");
+            keyPress(btnPressed);
             break;
         case "s":
-            btnDownPressed.click();
-            keyPress(btnDownPressed);
+            btnPressed = document.getElementById("ctrl--down");
+            keyPress(btnPressed);
             break;
         case " ":
-            btnBombPressed.click();
-            keyPress(btnBombPressed);
+            btnPressed = document.getElementById("ctrl--bomb");
+            keyPress(btnPressed);
             break;
     }
     
     function keyPress(keyPressed) {
+        keyPressed.click();
         keyPressed.classList.add('active');
         setTimeout(function() {
             keyPressed.classList.remove('active');
