@@ -45,6 +45,7 @@
     }
 
     #join-game .inputs {
+        width: 60%;
         margin-right: 16px;
     }
 
