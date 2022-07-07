@@ -1,6 +1,6 @@
 @media (orientation: portrait) {
     #overlay {
-        display: inherit;
+        display: flex;
     }
 
     #join-game,
