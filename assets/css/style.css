@@ -420,7 +420,6 @@
     position: absolute;
     cursor: pointer;
     color: var(--white-alpha-60);
-    /* transition: all 0.3s ease; */
 }
 
 #game-driver .ctrl__btn::before {
@@ -522,11 +521,10 @@
     border-radius: 5px;
     -webkit-border-radius: 5px;
     box-shadow: 0 0 5px var(--black-alpha-60);
-    background-color: var(--gamepad-color-btn);
+    background-color: var(--gamepad-color-bomb);
     position: absolute;
     cursor: pointer;
     transform: rotate(-45deg);
-    /* transition: all 0.15s ease; */
     z-index: -1;
 }
 

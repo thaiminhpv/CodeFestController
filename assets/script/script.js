@@ -159,6 +159,7 @@ window.onkeypress = (e) => {
     switch (key) {
         case "a":
             btnPressed = document.getElementById("ctrl--left");
+            console.log(btnPressed);
             keyPress(btnPressed);
             break;
         case "d":
@@ -183,15 +184,14 @@ window.onkeypress = (e) => {
         case "q":
             quitGame();
             break;
-        
     }
     
-    function keyPress(keyPressed) {
-        keyPressed.click();
-        keyPressed.classList.add('active');
-        setTimeout(function() {
-            keyPressed.classList.remove('active');
-        }, 150)
-    }
 };
+function keyPress(keyPressed) {
+    keyPressed.click();
+    keyPressed.classList.add('active');
+    setTimeout(() => {
+        keyPressed.classList.remove('active');
+    }, 150)
+}
 
