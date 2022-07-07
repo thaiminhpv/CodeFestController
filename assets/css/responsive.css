@@ -3,6 +3,7 @@
         display: inherit;
     }
 
+    #join-game,
     #game-driver {
         display: none;
     }
