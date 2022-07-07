@@ -12,23 +12,6 @@ window.addEventListener('load', () => {
     }, 600);
 });
 
-screen.orientation.addEventListener("change", () => {
-    CheckScreenOrientation();
-});
-
-function CheckScreenOrientation() {
-    var overlay = document.getElementById("overlay");
-    var gamepad = document.querySelector(".gamepad");
-
-    if(screen.availHeight < screen.availWidth){
-        overlay.classList.add("disable");
-        gamepad.classList.remove("disable");
-    } else {
-        gamepad.classList.add("disable");
-        overlay.classList.remove("disable");
-    }
-}
-
 // const gameId = '422d6910-5520-41db-9de8-f653699fc3b7';
 // const playerId = 'player2-xxx';
 // const apiServer = 'http://jsclub.me:5000';
@@ -174,6 +157,7 @@ function setSocketAtt() {
 var btnPressed;
 window.onkeypress = (e) => {
     var key = e.key;
+    console.log(e.key);
     switch (key) {
         case "a":
             btnPressed = document.getElementById("ctrl--left");
@@ -201,6 +185,7 @@ window.onkeypress = (e) => {
         case "q":
             quitGame();
             break;
+        
     }
     
     function keyPress(keyPressed) {

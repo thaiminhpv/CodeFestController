@@ -1,7 +1,16 @@
+@media (orientation: portrait) {
+    #overlay {
+        display: inherit;
+    }
+
+    #game-driver {
+        display: none;
+    }
+}
+
 @media (max-width: 1401px) and (orientation:landscape) {
-    #overlay,
-    #join-game {
-        transform: scale(1.3);
+    #overlay {
+        display: none;
     }
 
     #game-driver .screen {
@@ -21,7 +30,6 @@
 }
 
 @media (max-width: 1251px) and (orientation:landscape) {
-    #overlay,
     #join-game {
         transform: scale(1);
     }
