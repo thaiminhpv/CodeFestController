@@ -8,7 +8,6 @@ window.addEventListener('load', () => {
     document.querySelector('.page__loader').classList.add('fade--out');
     setTimeout(() => {
         document.querySelector('.page__loader').style.display = 'none';
-        CheckScreenOrientation();
     }, 600);
 });
 
