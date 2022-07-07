@@ -50,6 +50,7 @@
 
     #join-game .logo {
         width: 100px;
+        height: 100px;
         transform: translateY(-20%);
     }
 
