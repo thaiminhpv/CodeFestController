@@ -11,9 +11,9 @@ window.addEventListener('load', () => {
     }, 600);
 });
 
-// const gameId = '422d6910-5520-41db-9de8-f653699fc3b7';
-// const playerId = 'player2-xxx';
 // const apiServer = 'http://jsclub.me:5000';
+// const gameId = '267fd98c-355c-44cf-9b0a-55e8cd302908';
+// const playerId = 'player2-xxx';
 
 var apiServer = ''
 var gameId = '';
