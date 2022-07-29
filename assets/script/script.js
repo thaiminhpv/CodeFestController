@@ -154,12 +154,11 @@ function setSocketAtt() {
 }
 
 var btnPressed;
-window.onkeypress = (e) => {
+window.onkeydown = (e) => {
     var key = e.key;
     switch (key) {
         case "a":
             btnPressed = document.getElementById("ctrl--left");
-            console.log(btnPressed);
             keyPress(btnPressed);
             break;
         case "d":
