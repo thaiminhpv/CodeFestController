@@ -1,98 +1,112 @@
-// Precondition: You need to require socket.io.js in your html page
-// Reference link https://socket.io
-// <script src="socket.io.js"></script>
+console.log('Made by DxqDz');
 
-window.addEventListener('load', () => {
-    document.querySelector('.main').classList.remove('disable');
+const $ = document.getElementById.bind(document);
 
-    document.querySelector('.page__loader').classList.add('fade--out');
-    setTimeout(() => {
-        document.querySelector('.page__loader').style.display = 'none';
-    }, 600);
-});
+loader();
+function loader() {
+    window.addEventListener('load', () => {
+        document.querySelector('.main').classList.remove('disable');
+    
+        document.querySelector('.page__loader').classList.add('fade--out');
+        setTimeout(() => {
+            document.querySelector('.page__loader').style.display = 'none';
+        }, 600);
+    });
+}
 
+var joinGameForm = $('join-game');
+var gameDriver = $('game-driver');
 var apiServer = ''
 var gameId = '';
 var playerId = '';
-var joinGameBtn = document.getElementById("join-game-btn");
-var reconnectBtn = document.getElementById("reconnect-btn");
-var quitGameBtn = document.getElementById("quit-game-btn");
+var joinGameBtn = $("join-game-btn");
+var reconnectBtn = $("reconnect-btn");
+var quitGameBtn = $("quit-game-btn");
 var socket;
 
-joinGameBtn.addEventListener("click", () => {
-    joinGame();
-});
-
-window.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      joinGameBtn.click();
-    }
-});
-
+joinGameBtn.onclick = joinGame;
 function joinGame() {
-    apiServer= document.getElementById("host").value;
-    gameId = document.getElementById("gameID").value;
-    playerId = document.getElementById("playerID").value;
+    apiServer= $("host").value;
+    gameId = $("gameID").value;
+    playerId = $("playerID").value;
     DisableForm();
     socket = io.connect(apiServer, { reconnect: false, transports: ['websocket'] });
     setSocketAtt();
+    gamePadHandler()
 }
 
-reconnectBtn.addEventListener("click", () => {
-    reconnect();
-})
-
+reconnectBtn.onclick = reconnect;
 function reconnect() {
     socket.close();
     socket = io.connect(apiServer, { reconnect: false, transports: ['websocket'] });
     setSocketAtt();
+    gamePadHandler()
 }
 
-quitGameBtn.addEventListener("click", () => {
-    quitGame();
-})
-
+quitGameBtn.onclick = quitGame
 function quitGame() {
     socket.close();
     EnableForm();
 }
 
+window.addEventListener("keydown", (e) => {
+    let keyPressed = e.which
+    if (keyPressed === 13 && !joinGameForm.classList.contains("disable")) {
+        e.preventDefault();
+        joinGame();
+    }
+
+    if (keyPressed === 82 && !gameDriver.classList.contains("disable")) {
+        e.preventDefault();
+        reconnect();
+    }
+
+    if (keyPressed === 81 && !gameDriver.classList.contains("disable")) {
+        e.preventDefault();
+        quitGame();
+    }
+});
+
 function DisableForm() {
-    document.getElementById("join-game").classList.add("fade-out");
+    joinGameForm.classList.add("fade-out");
     setTimeout(function() {
-        document.getElementById("join-game").classList.add("disable");
-        document.getElementById("join-game").classList.remove("fade-out");
-        document.getElementById("game-driver").classList.remove("disable");
+        joinGameForm.classList.add("disable");
+        joinGameForm.classList.remove("fade-out");
+        gameDriver.classList.remove("disable");
     }, 500)
 }
 
 function EnableForm() {
-    document.getElementById("game-driver").classList.add("fade-out");
+    gameDriver.classList.add("fade-out");
     setTimeout(function() {
-        document.getElementById("game-driver").classList.add("disable");
-        document.getElementById("join-game").classList.add("fade-in");
-        document.getElementById("game-driver").classList.remove("fade-out");
-        document.getElementById("join-game").classList.remove("disable");
+        gameDriver.classList.add("disable");
+        joinGameForm.classList.add("fade-in");
+        gameDriver.classList.remove("fade-out");
+        joinGameForm.classList.remove("disable");
         setTimeout(() => {
-            document.getElementById("join-game").classList.remove("fade-in");
+            joinGameForm.classList.remove("fade-in");
         }, 500)
     }, 500)
 }
 
 // Connecto to API App server
 
-
-// LISTEN SOCKET.IO EVENTS
-
-// It it required to emit `join channel` event every time connection is happened
 function setSocketAtt() {
+    let connectedStatus = $('connected-status');
+    let socketStatus = $('socket-status');
+    let joinGameStatus = $('joingame-status');
+    let ticktackGameStatus = $('ticktack-status');
+
     socket.on('connect', () => {
         console.log('on connect');
-        document.getElementById('connected-status').style.color = "var(--green)";
-        document.getElementById('connected-status').style.textShadow = "var(--neon-green)";
-        document.getElementById('socket-status').style.color = "var(--green)";
-        document.getElementById('socket-status').style.textShadow = "var(--neon-green)";
+        Object.assign(socketStatus.style, {
+            color: "var(--green)",
+            textShadow: "var(--neon-green)"
+        });
+        Object.assign(connectedStatus.style, {
+            color: "var(--green)",
+            textShadow: "var(--neon-green)"
+        });
         console.log('[Socket] connected to server');    
         // API-1a
         socket.emit('join game', { game_id: gameId, player_id: playerId });
@@ -100,27 +114,38 @@ function setSocketAtt() {
     
     socket.on('disconnect', () => {
         console.warn('[Socket] disconnected');
-        document.getElementById('socket-status').style.color = "var(--red)";
-        document.getElementById('socket-status').style.textShadow = "var(--neon-red)";
-        document.getElementById('connected-status').style.color = "var(--red)";
-        document.getElementById('connected-status').style.textShadow = "var(--neon-red)";
+        Object.assign(socketStatus.style, {
+            color: "var(--red)",
+            textShadow: "var(--neon-red)"
+        });
+        Object.assign(connectedStatus.style, {
+            color: "var(--red)",
+            textShadow: "var(--neon-red)"
+        });
     });
     
     socket.on('connect_failed', () => {
         console.warn('[Socket] connect_failed');
-        document.getElementById('connected-status').style.color = "var(--red)";
-        document.getElementById('connected-status').style.textShadow = "var(--neon-red)";
-        document.getElementById('socket-status').style.color = "var(--red)";
-        document.getElementById('socket-status').style.textShadow = "var(--neon-red)";
+        Object.assign(socketStatus.style, {
+            color: "var(--red)",
+            textShadow: "var(--neon-red)"
+        });
+        Object.assign(connectedStatus.style, {
+            color: "var(--red)",
+            textShadow: "var(--neon-red)"
+        });
     });
-    
     
     socket.on('error', (err) => {
         console.error('[Socket] error ', err);
-        document.getElementById('connected-status').style.color = "var(--red)";
-        document.getElementById('connected-status').style.textShadow = "var(--neon-red)";
-        document.getElementById('socket-status').style.color = "var(--red)";
-        document.getElementById('socket-status').style.textShadow = "var(--neon-red)";
+        Object.assign(socketStatus.style, {
+            color: "var(--red)",
+            textShadow: "var(--neon-red)"
+        });
+        Object.assign(connectedStatus.style, {
+            color: "var(--red)",
+            textShadow: "var(--neon-red)"
+        });
     });
     
     
@@ -129,64 +154,92 @@ function setSocketAtt() {
     // API-1b
     socket.on('join game', (res) => {
         console.log('[Socket] join-game responsed', res);
-        document.getElementById('joingame-status').style.color = "var(--green)";
-        document.getElementById('joingame-status').style.textShadow = "var(--neon-green)";
+        Object.assign(joinGameStatus.style, {
+            color: "var(--green)",
+            textShadow: "var(--neon-green)"
+        });
     });
     
     //API-2
     socket.on('ticktack player', (res) => {
         console.info('> ticktack');
         console.log('[Socket] ticktack-player responsed, map_info: ', res.map_info);
-        document.getElementById('ticktack-status').style.color = "var(--green)";
-        document.getElementById('ticktack-status').style.textShadow = "var(--neon-green)";
+        Object.assign(ticktackGameStatus.style, {
+            color: "var(--green)",
+            textShadow: "var(--neon-green)"
+        });
     });
     
-    // API-3a
-    // socket.emit('drive player', { direction: '111b333222' });
-    //API-3b
     socket.on('drive player', (res) => {
         console.log('[Socket] drive-player responsed, res: ', res);
     });    
 }
 
-var btnPressed;
-window.onkeydown = (e) => {
-    var key = e.key;
-    switch (key) {
-        case "a":
-            btnPressed = document.getElementById("ctrl--left");
-            keyPress(btnPressed);
-            break;
-        case "d":
-            btnPressed = document.getElementById("ctrl--right");
-            keyPress(btnPressed);
-            break;
-        case "w":
-            btnPressed = document.getElementById("ctrl--up");
-            keyPress(btnPressed);
-            break;
-        case "s":
-            btnPressed = document.getElementById("ctrl--down");
-            keyPress(btnPressed);
-            break;
-        case " ":
-            btnPressed = document.getElementById("ctrl--bomb");
-            keyPress(btnPressed);
-            break;
-        case "r":
-            reconnect();
-            break;
-        case "q":
-            quitGame();
-            break;
+function gamePadHandler() {
+    window.onkeydown = (e) => {
+        if (!gameDriver.classList.contains('disable')) {
+            let keyPressed = e.which;
+            let currKey;
+            switch (keyPressed) {
+                case 65:
+                    currKey = $("ctrl--left");
+                    keyPressDown(currKey);
+                    break;
+                case 68:
+                    currKey = $("ctrl--right");
+                    keyPressDown(currKey);
+                    break;
+                case 87:
+                    currKey = $("ctrl--up");
+                    keyPressDown(currKey);
+                    break;
+                case 83:
+                    currKey = $("ctrl--down");
+                    keyPressDown(currKey);
+                    break;
+                case 32:
+                    currKey = $("ctrl--bomb");
+                    keyPressDown(currKey);
+                    break;
+            }
+        }
+    };
+    
+    window.onkeyup = (e) => {
+        if (!gameDriver.classList.contains('disable')) {
+            let keyPressed = e.which;
+            let currKey;
+            switch (keyPressed) {
+                case 65:
+                    currKey = $("ctrl--left");
+                    keyPressUp(currKey);
+                    break;
+                case 68:
+                    currKey = $("ctrl--right");
+                    keyPressUp(currKey);
+                    break;
+                case 87:
+                    currKey = $("ctrl--up");
+                    keyPressUp(currKey);
+                    break;
+                case 83:
+                    currKey = $("ctrl--down");
+                    keyPressUp(currKey);
+                    break;
+                case 32:
+                    currKey = $("ctrl--bomb");
+                    keyPressUp(currKey);
+                    break;
+            }
+        }
+    };
+    
+    function keyPressDown(currKey) {
+        currKey.click();
+        currKey.classList.add('active');
     }
     
-};
-function keyPress(keyPressed) {
-    keyPressed.click();
-    keyPressed.classList.add('active');
-    setTimeout(() => {
-        keyPressed.classList.remove('active');
-    }, 150)
+    function keyPressUp(currKey) {
+        currKey.classList.remove('active');
+    }
 }
-
