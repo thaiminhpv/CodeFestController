@@ -1,4 +1,4 @@
-console.log('Made by DxqDz');
+console.log("%cMade by DxqDz", "color:yellow");
 
 const $ = document.getElementById.bind(document);
 
@@ -16,7 +16,7 @@ function loader() {
 
 var joinGameForm = $('join-game');
 var gameDriver = $('game-driver');
-var apiServer = ''
+var apiServer = 'https://jsclub.me/'
 var gameId = '';
 var playerId = '';
 var joinGameBtn = $("join-game-btn");
