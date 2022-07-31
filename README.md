@@ -1,7 +1,7 @@
 Deploy: [https://gamepad.jsclub.me](https://gamepad.jsclub.me)
 ---
 
-Host: `https://jsclub.me`
+Host: `https://jsclub.me/`
 
 Game ID: `generated each game`
 
