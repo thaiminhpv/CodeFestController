@@ -61,7 +61,7 @@ window.addEventListener("keydown", (e) => {
         reconnect();
     }
 
-    if (keyPressed === 81 && !gameDriver.classList.contains("disable")) {
+    if ((keyPressed === 81 || keyPressed === 27) && !gameDriver.classList.contains("disable")) {
         e.preventDefault();
         quitGame();
     }
