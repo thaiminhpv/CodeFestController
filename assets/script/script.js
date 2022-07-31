@@ -1,4 +1,4 @@
-console.log("%cMade by DxqDz", "color:yellow");
+console.warn("%cCoded by DxqDz", "color:yellow");
 
 const $ = document.getElementById.bind(document);
 
@@ -181,23 +181,23 @@ function gamePadHandler() {
             let keyPressed = e.which;
             let currKey;
             switch (keyPressed) {
-                case 65:
+                case 65: case 37:
                     currKey = $("ctrl--left");
                     keyPressDown(currKey);
                     break;
-                case 68:
+                case 68: case 39:
                     currKey = $("ctrl--right");
                     keyPressDown(currKey);
                     break;
-                case 87:
+                case 87: case 38:
                     currKey = $("ctrl--up");
                     keyPressDown(currKey);
                     break;
-                case 83:
+                case 83: case 40:
                     currKey = $("ctrl--down");
                     keyPressDown(currKey);
                     break;
-                case 32:
+                case 32: 
                     currKey = $("ctrl--bomb");
                     keyPressDown(currKey);
                     break;
@@ -210,19 +210,19 @@ function gamePadHandler() {
             let keyPressed = e.which;
             let currKey;
             switch (keyPressed) {
-                case 65:
+                case 65: case 37:
                     currKey = $("ctrl--left");
                     keyPressUp(currKey);
                     break;
-                case 68:
+                case 68: case 39:
                     currKey = $("ctrl--right");
                     keyPressUp(currKey);
                     break;
-                case 87:
+                case 87: case 38:
                     currKey = $("ctrl--up");
                     keyPressUp(currKey);
                     break;
-                case 83:
+                case 83: case 40:
                     currKey = $("ctrl--down");
                     keyPressUp(currKey);
                     break;
