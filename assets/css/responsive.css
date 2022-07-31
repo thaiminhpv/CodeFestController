@@ -3,45 +3,17 @@
         display: flex;
     }
 
-    #join-game,
-    #game-driver {
+    #main {
         display: none;
-    }
-}
-
-@media (max-width: 1401px) and (orientation:landscape) {
-    #overlay {
-        display: none;
-    }
-
-    #game-driver .screen {
-        display: none;
-    }
-
-    #overlay,
-    .gamepad {
-        transform: scale(1.5);
-    }
-
-    #game-driver .gamepad__body button::before,
-    #game-driver .ctrl__btn::before,
-    #game-driver #ctrl--bomb::before {
-        display: none;
-    }
-}
-
-@media (max-width: 1251px) and (orientation:landscape) {
-    #join-game {
-        transform: scale(1);
-    }
-
-    #overlay,
-    .gamepad {
-        transform: scale(1.2);
     }
 }
 
 @media (max-width: 991px) and (orientation:landscape) {
+
+    #overlay {
+        display: none;
+    }
+
     #join-game {
         flex-direction: row;
         max-height: 300px;
@@ -63,14 +35,22 @@
         margin-left: 16px;
     }
 
-    #overlay,
-    .gamepad {
+    #game-driver .screen {
+        display: none;
+    }
+
+    #game-driver .gamepad {
         transform: scale(0.9);
+    }
+
+    #game-driver .gamepad__body button::before,
+    #game-driver .ctrl__btn::before,
+    #game-driver #ctrl--bomb::before {
+        display: none;
     }
 }
 
 @media (max-width: 767px) and (orientation:landscape) {
-    #overlay,
     .gamepad {
         transform: scale(0.8);
     }
