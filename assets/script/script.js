@@ -197,7 +197,7 @@ function gamePadHandler() {
                     currKey = $("ctrl--down");
                     keyPressDown(currKey);
                     break;
-                case 32: 
+                case 32: case 13:
                     currKey = $("ctrl--bomb");
                     keyPressDown(currKey);
                     break;
@@ -226,7 +226,7 @@ function gamePadHandler() {
                     currKey = $("ctrl--down");
                     keyPressUp(currKey);
                     break;
-                case 32:
+                case 32: case 13:
                     currKey = $("ctrl--bomb");
                     keyPressUp(currKey);
                     break;

@@ -2,7 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-    --main-color: #B02510;
+    /* --main-color: #B02510; */
+    --main-color: #5E7740;
     --main-alpha-60: rgb(176, 37, 16, 60);
     --white: #fff;
     --white-alpha-20: rgba(255, 255, 255, 0.2);
@@ -18,7 +19,6 @@
     --gamepad-color-l: #c8c8c8;
     --gamepad-color-r: #a5a7a4;
     --gamepad-color-btn: #444444;
-    --gamepad-color-btn-hover: #979797;
     --gamepad-color-bomb: #444444;
 
     --red: #f00;
@@ -56,7 +56,7 @@ html {
 body {
     height: 100vh;
     width: 100vw;
-    background: url(../img/background.png) bottom center / cover no-repeat;;
+    background: url(../img/background.png) top center / cover no-repeat;;
     background-attachment: fixed;
     font-size: 1.6rem;
     color: var(--white);
