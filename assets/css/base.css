@@ -146,11 +146,11 @@ button {
 }
 
 .fade-in {
-    animation: fadeIn 0.6s linear !important;
+    animation: fadeIn 0.3s linear !important;
 }
 
 .fade-out {
-    animation: fadeOut 0.6s linear !important;
+    animation: fadeOut 0.3s linear !important;
 }
 
 @keyframes fadeOut {

@@ -10,7 +10,7 @@ function loader() {
         document.querySelector('.page__loader').classList.add('fade--out');
         setTimeout(() => {
             document.querySelector('.page__loader').style.display = 'none';
-        }, 600);
+        }, 300);
     });
 }
 
@@ -73,7 +73,7 @@ function DisableForm() {
         joinGameForm.classList.add("disable");
         joinGameForm.classList.remove("fade-out");
         gameDriver.classList.remove("disable");
-    }, 500)
+    }, 300)
 }
 
 function EnableForm() {
@@ -85,8 +85,8 @@ function EnableForm() {
         joinGameForm.classList.remove("disable");
         setTimeout(() => {
             joinGameForm.classList.remove("fade-in");
-        }, 500)
-    }, 500)
+        }, 300)
+    }, 300)
 }
 
 // Connecto to API App server
