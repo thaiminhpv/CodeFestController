@@ -1,4 +1,4 @@
-console.warn("%cCoded by DxqDz", "color:yellow");
+console.warn("%cMade by DxqDz", "color:yellow");
 
 const $ = document.getElementById.bind(document);
 
