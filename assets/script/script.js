@@ -16,7 +16,7 @@ function loader() {
 
 var joinGameForm = $('join-game');
 var gameDriver = $('game-driver');
-var apiServer = 'https://jsclub.me/'
+var apiServer = ''
 var gameId = '';
 var playerId = '';
 var joinGameBtn = $("join-game-btn");
@@ -30,7 +30,10 @@ function joinGame() {
     gameId = $("gameID").value;
     playerId = $("playerID").value;
     DisableForm();
-    socket = io.connect(apiServer, { reconnect: false, transports: ['websocket'] });
+    socket = io.connect(apiServer, {
+        reconnect: false, 
+        transports: ['websocket']
+    });
     setSocketAtt();
     gamePadHandler()
 }
@@ -38,12 +41,15 @@ function joinGame() {
 reconnectBtn.onclick = reconnect;
 function reconnect() {
     socket.close();
-    socket = io.connect(apiServer, { reconnect: false, transports: ['websocket'] });
+    socket = io.connect(apiServer, {
+        reconnect: false, 
+        transports: ['websocket']
+    });
     setSocketAtt();
     gamePadHandler()
 }
 
-quitGameBtn.onclick = quitGame
+quitGameBtn.onclick = quitGame;
 function quitGame() {
     socket.close();
     EnableForm();
@@ -69,7 +75,7 @@ window.addEventListener("keydown", (e) => {
 
 function DisableForm() {
     joinGameForm.classList.add("fade-out");
-    setTimeout(function() {
+    setTimeout(() => {
         joinGameForm.classList.add("disable");
         joinGameForm.classList.remove("fade-out");
         gameDriver.classList.remove("disable");
@@ -78,10 +84,10 @@ function DisableForm() {
 
 function EnableForm() {
     gameDriver.classList.add("fade-out");
-    setTimeout(function() {
+    setTimeout(() => {
         gameDriver.classList.add("disable");
-        joinGameForm.classList.add("fade-in");
         gameDriver.classList.remove("fade-out");
+        joinGameForm.classList.add("fade-in");
         joinGameForm.classList.remove("disable");
         setTimeout(() => {
             joinGameForm.classList.remove("fade-in");
@@ -109,7 +115,10 @@ function setSocketAtt() {
         });
         console.log('[Socket] connected to server');    
         // API-1a
-        socket.emit('join game', { game_id: gameId, player_id: playerId });
+        socket.emit('join game', {
+            game_id: gameId,
+            player_id: playerId 
+        });
     });
     
     socket.on('disconnect', () => {
@@ -177,60 +186,56 @@ function setSocketAtt() {
 
 function gamePadHandler() {
     window.onkeydown = (e) => {
-        if (!gameDriver.classList.contains('disable')) {
-            let keyPressed = e.which;
-            let currKey;
-            switch (keyPressed) {
-                case 65: case 37:
-                    currKey = $("ctrl--left");
-                    keyPressDown(currKey);
-                    break;
-                case 68: case 39:
-                    currKey = $("ctrl--right");
-                    keyPressDown(currKey);
-                    break;
-                case 87: case 38:
-                    currKey = $("ctrl--up");
-                    keyPressDown(currKey);
-                    break;
-                case 83: case 40:
-                    currKey = $("ctrl--down");
-                    keyPressDown(currKey);
-                    break;
-                case 32: case 13:
-                    currKey = $("ctrl--bomb");
-                    keyPressDown(currKey);
-                    break;
-            }
+        let keyPressed = e.which;
+        let currKey;
+        switch (keyPressed) {
+            case 65: case 37:
+                currKey = $("ctrl--left");
+                keyPressDown(currKey);
+                break;
+            case 68: case 39:
+                currKey = $("ctrl--right");
+                keyPressDown(currKey);
+                break;
+            case 87: case 38:
+                currKey = $("ctrl--up");
+                keyPressDown(currKey);
+                break;
+            case 83: case 40:
+                currKey = $("ctrl--down");
+                keyPressDown(currKey);
+                break;
+            case 32: case 13:
+                currKey = $("ctrl--bomb");
+                keyPressDown(currKey);
+                break;
         }
     };
     
     window.onkeyup = (e) => {
-        if (!gameDriver.classList.contains('disable')) {
-            let keyPressed = e.which;
-            let currKey;
-            switch (keyPressed) {
-                case 65: case 37:
-                    currKey = $("ctrl--left");
-                    keyPressUp(currKey);
-                    break;
-                case 68: case 39:
-                    currKey = $("ctrl--right");
-                    keyPressUp(currKey);
-                    break;
-                case 87: case 38:
-                    currKey = $("ctrl--up");
-                    keyPressUp(currKey);
-                    break;
-                case 83: case 40:
-                    currKey = $("ctrl--down");
-                    keyPressUp(currKey);
-                    break;
-                case 32: case 13:
-                    currKey = $("ctrl--bomb");
-                    keyPressUp(currKey);
-                    break;
-            }
+        let keyPressed = e.which;
+        let currKey;
+        switch (keyPressed) {
+            case 65: case 37:
+                currKey = $("ctrl--left");
+                keyPressUp(currKey);
+                break;
+            case 68: case 39:
+                currKey = $("ctrl--right");
+                keyPressUp(currKey);
+                break;
+            case 87: case 38:
+                currKey = $("ctrl--up");
+                keyPressUp(currKey);
+                break;
+            case 83: case 40:
+                currKey = $("ctrl--down");
+                keyPressUp(currKey);
+                break;
+            case 32: case 13:
+                currKey = $("ctrl--bomb");
+                keyPressUp(currKey);
+                break;
         }
     };
     
